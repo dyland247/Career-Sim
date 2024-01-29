@@ -1,0 +1,39 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class CareerAssessmentSimulator {
+    private static final String[] CAREER_OPTIONS = {"Software Engineer", "Data Scientist", "Marketing Manager", "Entrepreneur"};
+    private static final String[] ASSESSMENT_RESULTS = {"You have a natural aptitude for this career!", "Consider exploring other options.", "Your skills align well with this field.", "You may find success in a different career path."};
+
+    private static final Random random = new Random();
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Career Assessment Simulator!");
+
+        for (String career : CAREER_OPTIONS) {
+            System.out.println("Do you enjoy working with " + career + "? (yes/no)");
+            String response = scanner.next().toLowerCase();
+
+            if (response.equals("yes")) {
+                System.out.println("Great! How skilled do you feel in " + career + "? (1-10)");
+                int skillLevel = scanner.nextInt();
+
+                assessCareer(skillLevel, career);
+            }
+        }
+
+        System.out.println("Assessment complete. Thanks for exploring careers with us!");
+    }
+
+    private static void assessCareer(int skillLevel, String career) {
+        int assessmentResultIndex = random.nextInt(ASSESSMENT_RESULTS.length);
+        String assessmentResult = ASSESSMENT_RESULTS[assessmentResultIndex];
+
+        System.out.println("\nBased on your responses:");
+        System.out.println("Career: " + career);
+        System.out.println("Skill Level: " + skillLevel);
+        System.out.println("Assessment Result: " + assessmentResult);
+        System.out.println();
+    }
+}
